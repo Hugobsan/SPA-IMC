@@ -10,14 +10,24 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+    </style>
 </head>
 
 <body>
     <div class="container col-6 justify-content-center border border-secondary rounded p-3 mt-5">
         <div class="float-right">
-            <img width="35" height="35" src="https://img.icons8.com/color/48/info--v1.png" title="O IMC (Índice de Massa Corporal) é uma medida utilizada para avaliar se uma pessoa está dentro do peso ideal em relação à sua altura. É calculado dividindo-se o peso da pessoa em quilogramas pelo quadrado da sua altura em metros. O resultado do cálculo é comparado com valores de referência para determinar se a pessoa está abaixo do peso, dentro do peso normal, com sobrepeso ou obesa.">
+            <img width="35" height="35" id="informacao" src="https://img.icons8.com/color/48/info--v1.png">
         </div>
-        
+        <div id="info-imc" class="bg-warning p-3 mb-4 rounded" hidden>
+            <p>O IMC é uma medida que avalia se uma pessoa está no peso ideal em relação à sua altura. Calcula-se o IMC
+                dividindo o peso pelo quadrado da altura. O resultado é comparado com valores de
+                referência para determinar se a pessoa está abaixo do peso, dentro do peso normal, com sobrepeso ou
+                obesa.</p>
+        </div>
+
+
         <h1 class="text-center">Calculadora de IMC</h1>
         <div class="form mt-4">
             <label for="peso">Digite seu peso (em Kg)</label>
@@ -76,6 +86,18 @@
         //chamando a função calcularIMC ao digitar nos campos
         document.getElementById("peso").addEventListener("keyup", calcularIMC);
         document.getElementById("altura").addEventListener("keyup", calcularIMC);
+
+        var informacao = document.getElementById("informacao");
+
+        informacao.addEventListener("mouseover", showInfo);
+        informacao.addEventListener("mouseout", hideInfo);
+
+        function showInfo() {
+            document.getElementById("info-imc").removeAttribute("hidden");
+        }
+        function hideInfo() {
+            document.getElementById("info-imc").setAttribute("hidden", "true");
+        }
     </script>
 </body>
 
